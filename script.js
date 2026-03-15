@@ -65,11 +65,6 @@ function addTask() {
 
   tasks.push({ text, completed: false });
   saveTasks();
-  function clearAllTasks() {
-  tasks = [];
-  saveTasks();
-  renderTasks();
-}
   renderTasks();
   taskInput.value = "";
 }
@@ -82,6 +77,12 @@ function toggleTask(index) {
 
 function deleteTask(index) {
   tasks.splice(index, 1);
+  saveTasks();
+  renderTasks();
+}
+
+function clearAllTasks() {
+  tasks = [];
   saveTasks();
   renderTasks();
 }
