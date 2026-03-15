@@ -65,6 +65,11 @@ function addTask() {
 
   tasks.push({ text, completed: false });
   saveTasks();
+  function clearAllTasks() {
+  tasks = [];
+  saveTasks();
+  renderTasks();
+}
   renderTasks();
   taskInput.value = "";
 }
