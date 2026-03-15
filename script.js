@@ -4,6 +4,20 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+function updateTaskCounter() {
+  const pendingTasks = tasks.filter(task => !task.completed).length;
+  document.getElementById("taskCounter").textContent = `Tareas pendientes: ${pendingTasks}`;
+}
+
+function updateEmptyMessage() {
+  const emptyMessage = document.getElementById("emptyMessage");
+  if (tasks.length === 0) {
+    emptyMessage.style.display = "block";
+  } else {
+    emptyMessage.style.display = "none";
+  }
+}
+
 function renderTasks() {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
@@ -38,6 +52,9 @@ function renderTasks() {
 
     taskList.appendChild(li);
   });
+
+  updateTaskCounter();
+  updateEmptyMessage();
 }
 
 function addTask() {
@@ -63,5 +80,11 @@ function deleteTask(index) {
   saveTasks();
   renderTasks();
 }
+
+document.getElementById("taskInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+});
 
 renderTasks();
