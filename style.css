@@ -90,3 +90,17 @@ p {
   background: #dc3545;
   color: white;
 }
+
+#taskCounter {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+#emptyMessage {
+  text-align: center;
+  color: #777;
+  margin-bottom: 15px;
+}
+
