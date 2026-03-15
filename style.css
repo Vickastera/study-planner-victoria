@@ -104,3 +104,20 @@ p {
   margin-bottom: 15px;
 }
 
+#clearAllBtn {
+  display: block;
+  margin: 0 auto 20px;
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#clearAllBtn:hover {
+  background: #222;
+}
+
+
+
