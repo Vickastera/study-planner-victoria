@@ -1,96 +1,45 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+// Lógica y animaciones de bloques tipo Tetris
 
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-function updateTaskCounter() {
-  const pendingTasks = tasks.filter(task => !task.completed).length;
-  document.getElementById("taskCounter").textContent = `Tareas pendientes: ${pendingTasks}`;
-}
-
-function updateEmptyMessage() {
-  const emptyMessage = document.getElementById("emptyMessage");
-  if (tasks.length === 0) {
-    emptyMessage.style.display = "block";
-  } else {
-    emptyMessage.style.display = "none";
-  }
-}
-
-function renderTasks() {
-  const taskList = document.getElementById("taskList");
-  taskList.innerHTML = "";
-
-  tasks.forEach((task, index) => {
-    const li = document.createElement("li");
-
-    const span = document.createElement("span");
-    span.textContent = task.text;
-    if (task.completed) {
-      span.classList.add("completed");
+class TetrisBlock {
+    constructor(shape) {
+        this.shape = shape;
+        this.position = { x: 0, y: 0 };
+        this.color = this.randomColor();
     }
 
-    const buttons = document.createElement("div");
-    buttons.classList.add("task-buttons");
+    randomColor() {
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#FFFF33', '#FF33FF'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
 
-    const completeBtn = document.createElement("button");
-    completeBtn.textContent = "✔";
-    completeBtn.classList.add("complete-btn");
-    completeBtn.onclick = () => toggleTask(index);
+    draw() {
+        // Lógica para dibujar el bloque en el canvas
+    }
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "✖";
-    deleteBtn.classList.add("delete-btn");
-    deleteBtn.onclick = () => deleteTask(index);
+    moveDown() {
+        this.position.y += 1;
+        this.draw();
+    }
 
-    buttons.appendChild(completeBtn);
-    buttons.appendChild(deleteBtn);
+    moveLeft() {
+        this.position.x -= 1;
+        this.draw();
+    }
 
-    li.appendChild(span);
-    li.appendChild(buttons);
-
-    taskList.appendChild(li);
-  });
-
-  updateTaskCounter();
-  updateEmptyMessage();
+    moveRight() {
+        this.position.x += 1;
+        this.draw();
+    }
 }
 
-function addTask() {
-  const taskInput = document.getElementById("taskInput");
-  const text = taskInput.value.trim();
-
-  if (text === "") return;
-
-  tasks.push({ text, completed: false });
-  saveTasks();
-  renderTasks();
-  taskInput.value = "";
+// Animaciones
+function animate() {
+    // Lógica de animación para el juego Tetris
 }
 
-function toggleTask(index) {
-  tasks[index].completed = !tasks[index].completed;
-  saveTasks();
-  renderTasks();
+// Iniciar el juego
+function startGame() {
+    setInterval(animate, 1000);
 }
 
-function deleteTask(index) {
-  tasks.splice(index, 1);
-  saveTasks();
-  renderTasks();
-}
-
-function clearAllTasks() {
-  tasks = [];
-  saveTasks();
-  renderTasks();
-}
-
-document.getElementById("taskInput").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    addTask();
-  }
-});
-
-renderTasks();
+startGame();  
