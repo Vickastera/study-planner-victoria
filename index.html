@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MINO</title>
+<title>MINO Study Planner</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -15,28 +15,23 @@
 
 <h1 class="title">MINO</h1>
 
-<!-- STATS -->
 <div class="card">
   <p>LEVEL: <span id="level">1</span></p>
   <p>XP: <span id="xp">0</span></p>
-  <p>🔥 STREAK: <span id="streak">0</span></p>
+  <p>STREAK: <span id="streak">0</span></p>
 </div>
 
-<!-- INPUT -->
 <div class="card">
   <input id="taskInput" placeholder="New task...">
   <button onclick="addTask()">ADD</button>
 </div>
 
-<!-- TASK LIST -->
 <div id="taskList"></div>
 
-<!-- UNDO -->
 <div id="undoBar" class="hidden">
-  <button onclick="undoDelete()">↩ UNDO</button>
+  <button onclick="undoDelete()">UNDO</button>
 </div>
 
-<!-- POMODORO -->
 <div class="card">
   <p id="timer">25:00</p>
   <button onclick="startPomodoro()">START</button>
@@ -46,8 +41,7 @@
 
 </div>
 
-<script>
-alert("JS CONNECTED");
-</script>
+<script src="script.js"></script>
+
 </body>
 </html>
