@@ -1,7 +1,3 @@
-alert("NEW VERSION");
-
-let tasks = [];
-let lastDeleted = null;
 let tasks = [];
 let lastDeleted = null;
 
@@ -9,19 +5,20 @@ let xp = 0;
 let level = 1;
 let streak = 0;
 
-// SOUND
+// 🔊 SOUND
 const sounds = {
   click: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3"),
   done: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3")
 };
 
 function playSound(name) {
-  if (!sounds[name]) return;
-  sounds[name].currentTime = 0;
-  sounds[name].play();
+  if (sounds[name]) {
+    sounds[name].currentTime = 0;
+    sounds[name].play();
+  }
 }
 
-// ADD TASK
+// ➕ ADD TASK
 function addTask() {
   const input = document.getElementById("taskInput");
   const text = input.value.trim();
@@ -35,7 +32,7 @@ function addTask() {
   render();
 }
 
-// TOGGLE TASK
+// ✔ TOGGLE TASK
 function toggleTask(i) {
   tasks[i].done = !tasks[i].done;
 
@@ -47,7 +44,7 @@ function toggleTask(i) {
   render();
 }
 
-// DELETE TASK
+// ❌ DELETE TASK
 function deleteTask(i) {
   lastDeleted = tasks[i];
   tasks.splice(i, 1);
@@ -55,7 +52,7 @@ function deleteTask(i) {
   render();
 }
 
-// UNDO
+// ↩ UNDO
 function undoDelete() {
   if (lastDeleted) {
     tasks.push(lastDeleted);
@@ -70,18 +67,18 @@ function showUndo() {
   setTimeout(() => bar.classList.add("hidden"), 3000);
 }
 
-// XP SYSTEM
+// 🎮 XP SYSTEM
 function gainXP() {
   xp += 10;
 
   if (xp >= level * 100) {
     xp = 0;
     level++;
-    alert("LEVEL UP!");
+    alert("LEVEL UP 🔥");
   }
 }
 
-// STREAK
+// 🔥 STREAK
 function updateStreak() {
   const today = new Date().toDateString();
   const last = localStorage.getItem("mino_day");
@@ -92,7 +89,7 @@ function updateStreak() {
   }
 }
 
-// POMODORO
+// ⏱ POMODORO
 let timer = 1500;
 let interval;
 
@@ -118,9 +115,9 @@ function updateTimer() {
     min + ":" + sec.toString().padStart(2, "0");
 }
 
-// RESET
+// 🔄 RESET
 function resetApp() {
-  const ok = confirm("Delete all progress?");
+  const ok = confirm("Delete all data?");
   if (!ok) return;
 
   tasks = [];
@@ -131,7 +128,7 @@ function resetApp() {
   render();
 }
 
-// RENDER
+// 🧠 RENDER
 function render() {
   document.getElementById("xp").textContent = xp;
   document.getElementById("level").textContent = level;
@@ -154,6 +151,6 @@ function render() {
   `).join("");
 }
 
-// INIT
+// 🚀 INIT
 updateStreak();
 render();
