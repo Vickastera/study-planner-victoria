@@ -5,10 +5,10 @@ let xp = 0;
 let level = 1;
 let streak = 0;
 
-// SOUND SYSTEM
+// SOUND
 const sounds = {
   click: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3"),
-  success: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3")
+  done: new Audio("https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3")
 };
 
 function playSound(name) {
@@ -32,26 +32,26 @@ function addTask() {
 }
 
 // TOGGLE TASK
-function toggleTask(index) {
-  tasks[index].done = !tasks[index].done;
+function toggleTask(i) {
+  tasks[i].done = !tasks[i].done;
 
-  if (tasks[index].done) {
+  if (tasks[i].done) {
     gainXP();
-    playSound("success");
+    playSound("done");
   }
 
   render();
 }
 
 // DELETE TASK
-function deleteTask(index) {
-  lastDeleted = tasks[index];
-  tasks.splice(index, 1);
+function deleteTask(i) {
+  lastDeleted = tasks[i];
+  tasks.splice(i, 1);
   showUndo();
   render();
 }
 
-// UNDO DELETE
+// UNDO
 function undoDelete() {
   if (lastDeleted) {
     tasks.push(lastDeleted);
@@ -66,24 +66,25 @@ function showUndo() {
   setTimeout(() => bar.classList.add("hidden"), 3000);
 }
 
-// XP + LEVEL
+// XP SYSTEM
 function gainXP() {
   xp += 10;
 
   if (xp >= level * 100) {
     xp = 0;
     level++;
+    alert("LEVEL UP!");
   }
 }
 
 // STREAK
 function updateStreak() {
   const today = new Date().toDateString();
-  const last = localStorage.getItem("mino_last_day");
+  const last = localStorage.getItem("mino_day");
 
   if (last !== today) {
     streak++;
-    localStorage.setItem("mino_last_day", today);
+    localStorage.setItem("mino_day", today);
   }
 }
 
@@ -115,7 +116,7 @@ function updateTimer() {
 
 // RESET
 function resetApp() {
-  const ok = confirm("This will delete ALL your progress. Continue?");
+  const ok = confirm("Delete all progress?");
   if (!ok) return;
 
   tasks = [];
@@ -139,10 +140,10 @@ function render() {
     return;
   }
 
-  list.innerHTML = tasks.map((task, i) => `
+  list.innerHTML = tasks.map((t, i) => `
     <div style="display:flex;justify-content:space-between;margin:6px 0">
       <span onclick="toggleTask(${i})" style="cursor:pointer">
-        ${task.done ? "✓" : "○"} ${task.text}
+        ${t.done ? "✓" : "○"} ${t.text}
       </span>
       <button onclick="deleteTask(${i})">X</button>
     </div>
