@@ -1,1 +1,1 @@
-# study-planner-victoria
+mino-study-planner
