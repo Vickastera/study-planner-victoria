@@ -12,12 +12,18 @@ body {
 
 .title {
   font-family: 'Press Start 2P', monospace;
+  text-align: center;
 }
 
 .card {
   border: 1px solid #333;
   padding: 10px;
   margin: 10px 0;
+}
+
+button {
+  cursor: pointer;
+  margin-left: 5px;
 }
 
 .hidden {
