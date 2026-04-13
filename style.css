@@ -1,130 +1,25 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
-  margin: 0;
-  padding: 20px;
-  color: #333;
+  background: #0d0d0d;
+  color: #eee;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 .container {
   max-width: 500px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  margin: auto;
+  padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 10px;
+.title {
+  font-family: 'Press Start 2P', monospace;
 }
 
-p {
-  text-align: center;
-  color: #666;
-  margin-bottom: 25px;
+.card {
+  border: 1px solid #333;
+  padding: 10px;
+  margin: 10px 0;
 }
 
-.task-input {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.hidden {
+  display: none;
 }
-
-.task-input input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.task-input button {
-  padding: 12px 18px;
-  background: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.task-input button:hover {
-  background: #005fa3;
-}
-
-#taskList {
-  list-style: none;
-  padding: 0;
-}
-
-#taskList li {
-  background: #f8f9ff;
-  padding: 14px 16px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #e3e8f0;
-}
-.completed {
-  text-decoration: line-through;
-  color: #888;
-}
-
-.task-buttons button {
-  margin-left: 8px;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.complete-btn {
-  background: #28a745;
-  color: white;
-}
-
-.delete-btn {
-  background: #dc3545;
-  color: white;
-}
-
-#taskCounter {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #444;
-}
-
-#emptyMessage {
-  text-align: center;
-  color: #777;
-  margin-bottom: 15px;
-}
-
-#clearAllBtn {
-  display: block;
-  margin: 0 auto 20px;
-  background: #444;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-#clearAllBtn:hover {
-  background: #222;
-}
-.complete-btn:hover {
-  background: #218838;
-}
-
-.delete-btn:hover {
-  background: #c82333;
-}
-
-
-
