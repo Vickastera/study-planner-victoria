@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MINO Study Planner</title>
+<title>MINO LEVEL 2 PRO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -11,37 +11,48 @@
 
 <body>
 
-<div class="container">
+<!-- ONBOARDING -->
+<div id="onboarding" class="screen">
+  <h1 class="title">MINO PRO</h1>
 
-<h1 class="title">MINO</h1>
+  <input id="nameInput" placeholder="Your name">
 
-<div class="card">
-  <p>LEVEL: <span id="level">1</span></p>
-  <p>XP: <span id="xp">0</span></p>
-  <p>STREAK: <span id="streak">0</span></p>
+  <input id="subjectInput" placeholder="Add subject">
+  <button onclick="addSubject()">ADD SUBJECT</button>
+
+  <div id="subjectList"></div>
+
+  <button onclick="startApp()">START GAME</button>
 </div>
 
-<div class="card">
-  <input id="taskInput" placeholder="New task...">
-  <button onclick="addTask()">ADD</button>
-</div>
+<!-- APP -->
+<div id="app" class="screen hidden">
 
-<div id="taskList"></div>
+  <div class="header">
+    <h2 id="userTitle"></h2>
+    <div>
+      <span id="level">Lv 1</span> |
+      <span id="xp">XP 0</span> |
+      <span id="streak">🔥 0</span>
+    </div>
+  </div>
 
-<div id="undoBar" class="hidden">
-  <button onclick="undoDelete()">UNDO</button>
-</div>
+  <div class="card">
+    <input id="taskInput" placeholder="New task...">
+    <select id="subjectSelect"></select>
+    <button onclick="addTask()">ADD TASK</button>
+  </div>
 
-<div class="card">
-  <p id="timer">25:00</p>
-  <button onclick="startPomodoro()">START</button>
-</div>
+  <div id="taskList"></div>
 
-<button onclick="resetApp()">RESET</button>
+  <div id="undoBar" class="hidden">
+    <button onclick="undoDelete()">UNDO DELETE</button>
+  </div>
+
+  <button onclick="resetApp()">RESET</button>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
