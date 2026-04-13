@@ -1,31 +1,54 @@
 body {
+  margin: 0;
   background: #0d0d0d;
-  color: #eee;
+  color: white;
   font-family: 'Share Tech Mono', monospace;
 }
 
-.container {
-  max-width: 500px;
+.screen {
+  max-width: 520px;
   margin: auto;
   padding: 20px;
 }
 
+.hidden { display: none; }
+
 .title {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P';
   text-align: center;
+  margin: 30px 0;
+  color: gold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: transparent;
+  border: 1px solid #333;
+  color: white;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: gold;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
 }
 
 .card {
-  border: 1px solid #333;
+  border: 1px solid #222;
   padding: 10px;
   margin: 10px 0;
 }
 
-button {
+.task {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #222;
   cursor: pointer;
-  margin-left: 5px;
-}
-
-.hidden {
-  display: none;
 }
