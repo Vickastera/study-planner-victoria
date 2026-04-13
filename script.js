@@ -1,3 +1,7 @@
+alert("NEW VERSION");
+
+let tasks = [];
+let lastDeleted = null;
 let tasks = [];
 let lastDeleted = null;
 
