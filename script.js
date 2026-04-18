@@ -2,14 +2,32 @@ let user = "";
 let subjects = [];
 let tasks = [];
 let lastDeleted = null;
-
 let xp = 0;
 let level = 1;
 let streak = 0;
 
-// 🔊 sound
-const clickSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3");
+// 💾 GUARDAR
+function saveData() {
+  localStorage.setItem("user", user);
+  localStorage.setItem("subjects", JSON.stringify(subjects));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("xp", xp);
+  localStorage.setItem("level", level);
+  localStorage.setItem("streak", streak);
+}
 
+// 💾 CARGAR
+function loadData() {
+  user = localStorage.getItem("user") || "";
+  subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+  tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  xp = parseInt(localStorage.getItem("xp")) || 0;
+  level = parseInt(localStorage.getItem("level")) || 1;
+  streak = parseInt(localStorage.getItem("streak")) || 0;
+}
+
+// 🔊 SOUND
+const clickSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3");
 function play() {
   clickSound.currentTime = 0;
   clickSound.play();
@@ -19,7 +37,6 @@ function play() {
 function addSubject() {
   const input = document.getElementById("subjectInput");
   if (!input.value.trim()) return;
-
   subjects.push(input.value.trim());
   input.value = "";
   renderSubjects();
@@ -33,17 +50,17 @@ function renderSubjects() {
 function startApp() {
   const name = document.getElementById("nameInput").value.trim();
   if (!name || subjects.length === 0) return;
-
   user = name;
+  saveData();
+  showApp();
+}
 
+function showApp() {
   document.getElementById("onboarding").classList.add("hidden");
   document.getElementById("app").classList.remove("hidden");
-
   document.getElementById("userTitle").innerText = "PLAYER: " + user;
-
   document.getElementById("subjectSelect").innerHTML =
     subjects.map(s => `<option>${s}</option>`).join("");
-
   updateStreak();
   render();
 }
@@ -52,29 +69,25 @@ function startApp() {
 function addTask() {
   const text = document.getElementById("taskInput").value.trim();
   const subject = document.getElementById("subjectSelect").value;
-
   if (!text) return;
-
   tasks.push({ text, subject, done: false });
   document.getElementById("taskInput").value = "";
-
   play();
+  saveData();
   render();
 }
 
 // ✔ TOGGLE
 function toggleTask(i) {
   tasks[i].done = !tasks[i].done;
-
   if (tasks[i].done) {
     xp += 10;
-
     if (xp >= level * 50) {
       level++;
       alert("LEVEL UP 🔥");
     }
   }
-
+  saveData();
   render();
 }
 
@@ -82,8 +95,8 @@ function toggleTask(i) {
 function deleteTask(i) {
   lastDeleted = tasks[i];
   tasks.splice(i, 1);
-
   showUndo();
+  saveData();
   render();
 }
 
@@ -92,6 +105,7 @@ function undoDelete() {
   if (lastDeleted) {
     tasks.push(lastDeleted);
     lastDeleted = null;
+    saveData();
     render();
   }
 }
@@ -107,10 +121,10 @@ function showUndo() {
 function updateStreak() {
   const today = new Date().toDateString();
   const last = localStorage.getItem("lastDay");
-
   if (last !== today) {
     streak++;
     localStorage.setItem("lastDay", today);
+    saveData();
   }
 }
 
@@ -119,7 +133,6 @@ function render() {
   document.getElementById("xp").innerText = "XP " + xp;
   document.getElementById("level").innerText = "Lv " + level;
   document.getElementById("streak").innerText = "🔥 " + streak;
-
   document.getElementById("taskList").innerHTML = tasks.map((t, i) => `
     <div class="task" onclick="toggleTask(${i})">
       <span>${t.done ? "✔" : "○"} ${t.text} [${t.subject}]</span>
@@ -133,4 +146,10 @@ function resetApp() {
   if (!confirm("Reset everything?")) return;
   localStorage.clear();
   location.reload();
+}
+
+// 🚀 ARRANCAR
+loadData();
+if (user && subjects.length > 0) {
+  showApp();
 }
