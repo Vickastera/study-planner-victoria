@@ -25,6 +25,10 @@ input, select {
   color: white;
   box-sizing: border-box;
 }
+select option {
+  background: #1a1a1a;
+  color: white;
+}
 button {
   width: 100%;
   padding: 10px;
