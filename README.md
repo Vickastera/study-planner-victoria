@@ -7,6 +7,7 @@ MINO is a minimal game-inspired study planner.
 
 MINO turns studying into a game. Complete tasks, earn XP, and build streaks like a retro game system.
 
+
 ## 🚀 Features
 - Tasks
 - XP system
@@ -38,7 +39,8 @@ MINO turns studying into a game. Complete tasks, earn XP, and build streaks like
 ---
 
 ## 💡 Inspiration
-Inspired by retro games, Tetris mechanics and gamified productivity systems.
+Inspired by retro games and Tetris mechanics. 
+The name **MINO** comes from **tetro-MINO** — the building blocks of Tetris.
 
 ---
 
