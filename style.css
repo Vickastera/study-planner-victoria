@@ -20,10 +20,14 @@ input, select {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
-  background: transparent;
+  background: #1a1a1a;
   border: 1px solid #333;
   color: white;
   box-sizing: border-box;
+}
+select {
+  background: #1a1a1a !important;
+  color: white !important;
 }
 select option {
   background: #1a1a1a;
