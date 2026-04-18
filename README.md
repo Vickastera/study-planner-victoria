@@ -1,5 +1,7 @@
 # 🎮 MINO — Gamified Study Planner (Tetris-style productivity app)
 
+🌐 [Live Demo](https://vickastera.github.io/study-planner-victoria/)
+
 MINO is a minimal game-inspired study planner.
 ## 🧠 What is MINO?
 
@@ -8,7 +10,7 @@ MINO turns studying into a game. Complete tasks, earn XP, and build streaks like
 ## 🚀 Features
 - Tasks
 - XP system
-- Streak
+- Streak 
 - Pomodoro
 
 ---
