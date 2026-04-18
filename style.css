@@ -4,22 +4,18 @@ body {
   color: white;
   font-family: 'Share Tech Mono', monospace;
 }
-
 .screen {
   max-width: 520px;
   margin: auto;
   padding: 20px;
 }
-
 .hidden { display: none; }
-
 .title {
   font-family: 'Press Start 2P';
   text-align: center;
   margin: 30px 0;
   color: gold;
 }
-
 input, select {
   width: 100%;
   padding: 10px;
@@ -27,8 +23,8 @@ input, select {
   background: transparent;
   border: 1px solid #333;
   color: white;
+  box-sizing: border-box;
 }
-
 button {
   width: 100%;
   padding: 10px;
@@ -36,19 +32,82 @@ button {
   border: none;
   cursor: pointer;
   margin-top: 5px;
+  font-family: 'Share Tech Mono', monospace;
 }
-
 .card {
   border: 1px solid #222;
   padding: 10px;
   margin: 10px 0;
 }
-
 .task {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 8px;
   margin: 5px 0;
   border: 1px solid #222;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+.task:hover {
+  border-color: gold;
+}
+.task.done {
+  opacity: 0.5;
+  border-color: #444;
+}
+.task.done span {
+  text-decoration: line-through;
+  color: #888;
+}
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); background: #1a1a00; }
+  100% { transform: scale(1); }
+}
+.task.pop {
+  animation: pop 0.3s ease;
+}
+.xp-bar-container {
+  width: 100%;
+  background: #222;
+  border: 1px solid #333;
+  height: 10px;
+  margin: 8px 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.xp-bar {
+  height: 100%;
+  background: gold;
+  transition: width 0.4s ease;
+}
+@media (max-width: 480px) {
+  .screen {
+    padding: 12px;
+  }
+  .title {
+    font-size: 14px;
+    margin: 15px 0;
+  }
+  .task {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .task button {
+    width: 100%;
+  }
+  .header {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
 }
