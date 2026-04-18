@@ -65,6 +65,13 @@ function showApp() {
   render();
 }
 
+function goHome() {
+  document.getElementById("app").classList.add("hidden");
+  document.getElementById("onboarding").classList.remove("hidden");
+  document.getElementById("nameInput").value = user;
+  renderSubjects();
+}
+
 // ➕ TASK
 function addTask() {
   const text = document.getElementById("taskInput").value.trim();
@@ -156,6 +163,16 @@ function resetApp() {
   localStorage.clear();
   location.reload();
 }
+
+// ⌨️ ENTER
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("taskInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") addTask();
+  });
+  document.getElementById("subjectInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") addSubject();
+  });
+});
 
 // 🚀 ARRANCAR
 loadData();
