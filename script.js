@@ -89,6 +89,13 @@ function toggleTask(i) {
   }
   saveData();
   render();
+  setTimeout(() => {
+    const taskEls = document.querySelectorAll(".task");
+    if (taskEls[i]) {
+      taskEls[i].classList.add("pop");
+      setTimeout(() => taskEls[i].classList.remove("pop"), 300);
+    }
+  }, 10);
 }
 
 // ❌ DELETE
@@ -133,8 +140,10 @@ function render() {
   document.getElementById("xp").innerText = "XP " + xp;
   document.getElementById("level").innerText = "Lv " + level;
   document.getElementById("streak").innerText = "🔥 " + streak;
+  const progress = Math.min((xp % (level * 50)) / (level * 50) * 100, 100);
+  document.getElementById("xpBar").style.width = progress + "%";
   document.getElementById("taskList").innerHTML = tasks.map((t, i) => `
-    <div class="task" onclick="toggleTask(${i})">
+    <div class="task ${t.done ? 'done' : ''}" onclick="toggleTask(${i})">
       <span>${t.done ? "✔" : "○"} ${t.text} [${t.subject}]</span>
       <button onclick="event.stopPropagation(); deleteTask(${i})">X</button>
     </div>
